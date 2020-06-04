@@ -184,7 +184,7 @@ def InputMonitor():
     try:
         while True:
             if hasRequests and ioBrokerHost:
-                ioBrokerThread = IoBroker('http://' + ioBrokerHost + ':8082', copy.deepcopy(state.values()))
+                ioBrokerThread = IoBroker('http://' + ioBrokerHost + ':8082', copy.deepcopy(list(state.values())))
                 ioBrokerThread.start()
             for s in state.values():
                 s['changed'] = False
@@ -193,7 +193,6 @@ def InputMonitor():
         pass
     log.info('stop')
 
-GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 InputMonitor()
 GPIO.cleanup()
