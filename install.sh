@@ -15,6 +15,7 @@ function do_run {
         --privileged \
         --restart unless-stopped \
         -e HOSTNAME=raspi3 \
+        -v /etc/resolv.conf:/etc/resolv.conf \
         -v /sys/class/gpio:/sys/class/gpio \
         -v /var/log/gpio_monitor.log:/var/log/gpio_monitor.log \
         --name gpio_monitor \
@@ -30,6 +31,7 @@ function do_shell {
         --device /dev/gpiomem \
         --privileged \
         -e HOSTNAME=raspi3 \
+        -v /etc/resolv.conf:/etc/resolv.conf \
         -v /sys/class/gpio:/sys/class/gpio \
         -v /var/log/gpio_monitor.log:/var/log/gpio_monitor.log \
         -v $PWD:/home \
